@@ -139,7 +139,7 @@ if __name__ == '__main__':
 
     top_k = None
 
-    dataset_path = '/data/yuyang/hpatches-sequences-release'
+    dataset_path = '../evaluation_hpatch/hpatches_sequences/hpatches-sequences-release'
     prediction_path = config['feature_path']
 
     lim = [1, 15]
@@ -156,12 +156,12 @@ if __name__ == '__main__':
 
     for method in methods:
         output_file = os.path.join(cache_dir, method + '.npz')
-        print(method)
+      #  print(method)
 
         read_function = generate_read_function(prediction_path, method)
 
         if os.path.exists(output_file):
-            print('Loading precomputed errors...')
+         #   print('Loading precomputed errors...')
             error = np.load(output_file, allow_pickle=True)
             error = {key: error[key].item() for key in error}
             errors[method] = error
@@ -170,6 +170,7 @@ if __name__ == '__main__':
             np.savez(output_file, **errors[method])
 
     def generate_plt(metric):
+        print(metric, 'at 3,6,9 thr:')
         plt_lim = [1, 10]
         plt_rng = np.arange(plt_lim[0], plt_lim[1] + 1)
 
@@ -178,7 +179,7 @@ if __name__ == '__main__':
 
         plt.figure(figsize=(15, 5))
 
-        linewidth = 1
+        linewidth = 2
         plt.subplot(1, 3, 1)
         for method, name, color, ls in zip(methods, names, colors, linestyles):
             i_err, v_err = errors[method]['i_err'][metric], errors[method]['v_err'][metric]
@@ -186,12 +187,19 @@ if __name__ == '__main__':
             n_v = errors[method]['v_count']
             plt.plot(plt_rng, [(i_err[thr] + v_err[thr]) / (n_i + n_v) for thr in plt_rng], color=color, ls=ls,
                      linewidth=linewidth, label=name)
-        # if metric == 'HA':
-        #     plt.title('Overall')
-        plt.title('Overall')
+
+            print(name,[(i_err[3] + v_err[3]) / (n_i + n_v)])
+            print(name, [(i_err[6] + v_err[6]) / (n_i + n_v)])
+            print(name, [(i_err[9] + v_err[9]) / (n_i + n_v)])
+
+        if metric == 'MMA':
+            plt.title('Overall')
+         #   plt.ylabel('MMA (SS)')
+        #else:
+        plt.ylabel(metric)
+        #plt.title('Overall')
         plt.xlim(plt_lim)
         plt.xticks(plt_rng)
-        plt.ylabel(metric)
         plt.ylim([0, 1])
         plt.grid()
         plt.tick_params(axis='both', which='major', labelsize=20)
@@ -202,12 +210,12 @@ if __name__ == '__main__':
             i_err, v_err = errors[method]['i_err'][metric], errors[method]['v_err'][metric]
             n_i = errors[method]['i_count']
             plt.plot(plt_rng, [i_err[thr] / n_i for thr in plt_rng], color=color, ls=ls, linewidth=linewidth, label=name)
-        # if metric == 'HA':
-        #     plt.title('Illumination')
+        if metric == 'MMA':
+             plt.title('Illumination')
         # if metric == 'MMA':
         #     plt.xlabel('threshold [px]')
-        plt.title('Illumination')
-        plt.xlabel('threshold [px]')
+        #plt.title('Illumination')
+        #plt.xlabel('threshold [px]')
         plt.xlim(plt_lim)
         plt.xticks(plt_rng)
         plt.ylim([0, 1])
@@ -220,9 +228,9 @@ if __name__ == '__main__':
             i_err, v_err = errors[method]['i_err'][metric], errors[method]['v_err'][metric]
             n_v = errors[method]['v_count']
             plt.plot(plt_rng, [v_err[thr] / n_v for thr in plt_rng], color=color, ls=ls, linewidth=linewidth, label=name)
-        # if metric == 'HA':
-        #     plt.title('Viewpoint')
-        plt.title('Viewpoint')
+        if metric == 'MMA':
+             plt.title('Viewpoint')
+        #plt.title('Viewpoint')
         plt.xlim(plt_lim)
         plt.xticks(plt_rng)
         plt.ylim([0, 1])

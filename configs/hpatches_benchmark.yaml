@@ -1,0 +1,6 @@
+methods: cndesc
+names: cndesc
+colors: red
+linestyles: '-'
+metrics: MMA,Precision,HA
+feature_path: "/data/changwei/hpatch/"
