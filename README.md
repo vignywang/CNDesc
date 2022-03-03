@@ -33,5 +33,4 @@ CUDA_VISIBLE_DEVICES=0 python export.py  --tag [Descriptor_suffix_name] --config
 ```
 cd evaluation_benchmark
 python hpatch_benchmark.py --config ../configs/hpatches_benchmark.yaml
-run HPatches-Sequences-Matching-Benchmark.ipynb
 ```
