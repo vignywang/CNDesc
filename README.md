@@ -1,7 +1,7 @@
 # CNDesc (under review)
 
 To do：
-- [x] Evaluation code for MTLDesc
+- [x] Evaluation code for CNDesc
 - [x] Trained model 
 - [ ] Training code (After the paper is accepted.)
 
