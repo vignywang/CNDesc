@@ -14,7 +14,7 @@ pip install -r requirement.txt,
 # Quick start
 HPatches Image Matching Benchmark
 
-1.Download the trained model: https://drive.google.com/file/d/1qrvdd3KVYFl6EwH8s5IS5p_Hs26xIKRD/view?usp=sharing
+1.Download the trained model: https://drive.google.com/file/d/16mVPNgYgmAgJ-DlmA7zC8lRffH4l0l5x/view?usp=sharing
 and place it in the "ckpt/cndesc".
 
 
