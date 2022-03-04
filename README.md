@@ -9,7 +9,7 @@ To do：
 
 # Requirement
 ```
-pip install -r requirement.txt,
+pip install -r requirement.txt
 ```
 
 # Quick start
