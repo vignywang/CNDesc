@@ -28,7 +28,7 @@ bash download.sh
 3.Extract local descriptors：
 ```
 cd evaluation_hpatch
-CUDA_VISIBLE_DEVICES=0 python export.py  --tag [Descriptor_suffix_name] --config ../configs/CNDesc_extract.yaml
+CUDA_VISIBLE_DEVICES=0 python export.py  --tag [Descriptor_suffix_name]  --output_root [output_dir] --config ../configs/CNDesc_extract.yaml
 ```
 4.Evaluation
 ```
