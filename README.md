@@ -1,5 +1,5 @@
 # CNDesc (under review)
-This repository is for reviewers only to understand the implementation details.
+This repository is for reviewers to understand the implementation details.
 
 To do：
 - [x] Evaluation code for CNDesc
