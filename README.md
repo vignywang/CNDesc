@@ -35,3 +35,19 @@ CUDA_VISIBLE_DEVICES=0 python export.py  --tag [Descriptor_suffix_name]  --outpu
 cd evaluation_benchmark
 python hpatch_benchmark.py --config ../configs/hpatches_benchmark.yaml
 ```
+The evaluation results will be displayed as:
+```
+MMA at 3,6,9 thr:
+cndesc [0.7397221459282769]
+cndesc [0.8354972556785301]
+cndesc [0.8578464366771557]
+Precision at 3,6,9 thr:
+cndesc [0.7586607756438078]
+cndesc [0.8576736450195312]
+cndesc [0.880967034233941]
+HA at 3,6,9 thr:
+cndesc [0.7648148006863065]
+cndesc [0.8981480068630643]
+cndesc [0.9407406559696904]
+
+```
