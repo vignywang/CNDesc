@@ -117,26 +117,18 @@ class MeanMatchingAccuracy(object):
         self.sum_accuracy = 0
         self.sum_sample_num = 0
 
-        # 不匹配点间距离统计相关
+     
         self.sum_outlier_ratio = [0, 0, 0, 0, 0]
 
     def reset(self):
         self.sum_accuracy = 0
         self.sum_sample_num = 0
 
-        # 不匹配点间距离统计相关
+   
         self.sum_outlier_ratio = [0, 0, 0, 0, 0]
 
     def update(self, gt_homography, matched_point):
-        """
-        计算单个样本对的匹配准确度
-        Args:
-            gt_homography: 该样本对的单应变换真值
-            matched_point: List or Array.
-            matched_point[0]是source image上的点,顺序为(y,x)
-            matched_point[1]是target image上的点,顺序为(y,x),
-            计算要先颠倒顺序为(x,y)
-        """
+       
         inv_homography = np.linalg.inv(gt_homography)
         src_point, tgt_point = matched_point[0], matched_point[1]
         src_point = src_point[:, ::-1]
@@ -167,11 +159,7 @@ class MeanMatchingAccuracy(object):
         self.sum_sample_num += 1
 
     def statistic_dist(self, dist):
-        """
-        统计不匹配的点间距离的分布情况,分别统计[0,e/2], (e/2,e], (e,2e], (2e,4e], (4e,+)五个区间中分布的百分比
-        Args:
-            dist: [n,] n个不匹配点间的距离
-        """
+
         count_0 = (dist <= 0.5*self.epsilon).astype(np.float)
         count_1 = ((dist > 0.5*self.epsilon) & (dist <= self.epsilon)).astype(np.float)
         count_2 = ((dist > self.epsilon) & (dist <= 2*self.epsilon)).astype(np.float)  # (e,2e]
@@ -199,9 +187,7 @@ class MeanMatchingAccuracy(object):
         return self.sum_accuracy/self.sum_sample_num, self.sum_accuracy, self.sum_sample_num
 
     def average_outlier(self):
-        """
-        返回outlier重投影误差在各个区间的比例
-        """
+     
         if self.sum_sample_num == 0:
             return 0, 0, 0, 0, 0
         avg_ratio_0 = self.sum_outlier_ratio[0] / self.sum_sample_num
@@ -377,13 +363,13 @@ class mAPCalculator(object):
         fp = np.concatenate(self.fp)
         prob = np.concatenate(self.prob)
 
-        # 对整体进行排序
+     
         sort_idx = np.argsort(prob)[::-1]
         tp = tp[sort_idx]
         fp = fp[sort_idx]
         prob = prob[sort_idx]
 
-        # 进行累加计算
+
         tp_cum = np.cumsum(tp)
         fp_cum = np.cumsum(fp)
         recall = tp_cum / self.total_num
@@ -422,20 +408,20 @@ class mAPCalculator(object):
 
     @staticmethod
     def _compute_tp_fp(prob, gt_point, remove_zero=1e-4, distance_thresh=2):
-        # 这里只能计算一个样本的tp以及fp，而不是一个batch
+      
         assert len(np.shape(prob)) == 2
 
         mask = np.where(prob > remove_zero)
-        # 留下满足满足要求的点
+    
         prob = prob[mask]
-        # 得到对应点的坐标, [n, 2]
+    
         pred = np.array(mask).T
 
         sort_idx = np.argsort(prob)[::-1]
         prob = prob[sort_idx]
         pred = pred[sort_idx]
 
-        # 得到每个点与真值点间的距离，最终得到[n,m]的距离表达式
+      
         diff = np.expand_dims(pred, axis=1) - np.expand_dims(gt_point, axis=0)
         dist = np.linalg.norm(diff, axis=-1)
         matches = np.less_equal(dist, distance_thresh)
@@ -446,9 +432,9 @@ class mAPCalculator(object):
             correct = np.any(m)
             if correct:
                 gt_idx = np.argmax(m)
-                # 已匹配则为False
+             
                 tp.append(not matched[gt_idx])
-                # 标记已匹配的点
+            
                 matched[gt_idx] = 1
             else:
                 tp.append(False)
