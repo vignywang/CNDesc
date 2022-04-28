@@ -62,5 +62,5 @@ cndesc [0.9407406559696904]
 }
 ```
 ## Acknowledgements
-We refer to the public implementation of [D2Net] (https://
-github.com/mihaidusmanu/d2-net) and [ASLFeat] (https://github.com/lzx551402/ASLFeat) for organizing the code and implementing the evaluation metrics
+We refer to the public implementation of [D2Net](https://
+github.com/mihaidusmanu/d2-net) and [ASLFeat](https://github.com/lzx551402/ASLFeat) for organizing the code and implementing the evaluation metrics
