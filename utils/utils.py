@@ -15,7 +15,6 @@ class Consistent_loss(object):
         self.L1=torch.nn.L1Loss()
     def _compute_dist(self, X, Y):
         """
-        批量计算两类描述子之间的距离
         :param X: [bt,n,dim]
         :param Y: [bt,m,dim]
         :return: [bt,n,m]
@@ -33,7 +32,7 @@ class Consistent_loss(object):
         Args:
             desp_0: [bt,n,dim]
             desp_1: [bt,n,dim]
-            valid_mask: [bt,n] 1有效，0无效
+            valid_mask: [bt,n] 
             not_search_mask: [bt,n,n]
         Returns:
             loss
@@ -57,7 +56,6 @@ class DescriptorTripletLoss_E(object):
 
     def _compute_dist(self, X, Y):
         """
-        批量计算两类描述子之间的距离
         :param X: [bt,n,dim]
         :param Y: [bt,m,dim]
         :return: [bt,n,m]
@@ -75,7 +73,7 @@ class DescriptorTripletLoss_E(object):
         Args:
             desp_0: [bt,n,dim]
             desp_1: [bt,n,dim]
-            valid_mask: [bt,n] 1有效，0无效
+            valid_mask: [bt,n] 
             not_search_mask: [bt,n,n]
         Returns:
             loss
@@ -95,7 +93,6 @@ class DescriptorTripletLoss_E(object):
 
     def _compute_dist(self, X, Y):
         """
-        批量计算两类描述子之间的距离
         :param X: [bt,n,dim]
         :param Y: [bt,m,dim]
         :return: [bt,n,m]
@@ -113,7 +110,7 @@ class DescriptorTripletLoss_E(object):
         Args:
             desp_0: [bt,n,dim]
             desp_1: [bt,n,dim]
-            valid_mask: [bt,n] 1有效，0无效
+            valid_mask: [bt,n]
             not_search_mask: [bt,n,n]
         Returns:
             loss
