@@ -5,7 +5,7 @@ To do：
 - [x] Evaluation code for CNDesc
 - [x] Trained model 
 - [x] Training code 
-- [] L2 normalized version of the model and training code.
+- [ ] L2 normalized version of the model and training code.
 
 # Requirement
 ```
