@@ -179,9 +179,7 @@ class MeanMatchingAccuracy(object):
         self.sum_outlier_ratio[4] += ratio_4
 
     def average(self):
-        """
-        Returns: 平均匹配准确度
-        """
+
         if self.sum_sample_num == 0:
             return 0, 0, 0
         return self.sum_accuracy/self.sum_sample_num, self.sum_accuracy, self.sum_sample_num
