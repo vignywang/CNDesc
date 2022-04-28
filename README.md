@@ -1,11 +1,11 @@
-# CNDesc (under review)
-This repository is for reviewers to understand the implementation details.
+# CNDesc 
+The official implementation of "CNDesc: Cross Normalization for Local Descriptors Learning".
 
 To do：
 - [x] Evaluation code for CNDesc
 - [x] Trained model 
-- [ ] Training code (After the paper is accepted.)
-
+- [x] Training code 
+- [] L2 normalized version of the model and training code.
 
 # Requirement
 ```
@@ -50,4 +50,14 @@ cndesc [0.7648148006863065]
 cndesc [0.8981480068630643]
 cndesc [0.9407406559696904]
 
+```
+##  Citation
+```
+@article{wang2022cndesc,
+  title={CNDesc: Cross Normalization for Local Descriptors Learning},
+  author={Wang, Changwei and Xu, Rongtao and Xu, Shibiao and Meng, Weiliang and Zhang, Xiaopeng},
+  journal={IEEE Transactions on Multimedia},
+  year={2022},
+  publisher={IEEE}
+}
 ```
