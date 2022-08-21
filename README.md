@@ -1,5 +1,5 @@
 # CNDesc 
-The official implementation of "CNDesc: Cross Normalization for Local Descriptors Learning".
+The official implementation of "CNDesc: Cross Normalization for Local Descriptors Learning" ().
 
 To do：
 - [x] Evaluation code for CNDesc
